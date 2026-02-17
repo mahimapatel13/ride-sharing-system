@@ -5,7 +5,7 @@ powered by geohash & geospatial indexing provided by redis & golang worker pool
 # Architecture Overview
 <img width="7479" height="3657" alt="image" src="https://github.com/user-attachments/assets/4103e9a9-e047-48a8-a7d8-22f33c83f13a" />
 
-link: https://excalidraw.com/#json=_qJcyO3x9C_Oe9gp2KnE_,rMweYx-wltCiSE8PMT8exg
+[Architecture](https://excalidraw.com/#json=xjofRaAEOYNchxtSMEfqS,taOwlX15ty28b1wf053hJg)
 
 # Ride Matching Algorithm Overview
 <img width="1857" height="1039" alt="1" src="https://github.com/user-attachments/assets/c7319373-bc32-4e40-92e6-0b4944bcf3cc" />
