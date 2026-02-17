@@ -44,9 +44,8 @@ This project follows modular architecture to ensure sepearation of concerns.
 backend/
 ├── cmd/                               # Application entry points
 │   ├── api/                           # REST + WebSocket API server
-│   │   └── main.go                    # Bootstraps HTTP server, router, dependencies
-│   └── worker/                        # Background worker process
-│       └── main.go                    # Bootstraps worker, connects to Redis & RabbitMQ
+│       └── main.go                    # Bootstraps HTTP server, router, dependencies
+│  
 │
 ├── internal/                          # Private application code
 │   ├── api/
