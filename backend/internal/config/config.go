@@ -3,6 +3,7 @@ package config
 import (
 	"log"
 	"os"
+	"strconv"
 
 	"github.com/joho/godotenv"
 )
@@ -10,6 +11,8 @@ import (
 type Config struct {
 	DatabaseConfig DatabaseConfig
 	RedisConfig    RedisConfig
+	RabbitMQConfig RabbitMQConfig
+	MaxWorkerCount int
 }
 
 type DatabaseConfig struct {
@@ -21,13 +24,15 @@ type DatabaseConfig struct {
 	Address      string
 }
 
+type RabbitMQConfig struct{
+	URL string
+}
+
 type RedisConfig struct {
-	Port         string
-	User         string
-	Password     string
-	DatabaseName string
-	Host         string
-	Address      string
+	Protocol int
+	Password string
+	DB       int
+	Address  string
 }
 
 // LoadEnv loads the environment and file and configures the app using the env file
@@ -39,14 +44,20 @@ func LoadEnv() Config {
 		log.Fatalf("Error in loading .env file: %v", err)
 	}
 	dbConfig := loadDBConfig()
+	redisConfig := loadRedisConfig()
+	mqConfig := loadRabbitMQConfig()
 
 	config := Config{
 		DatabaseConfig: dbConfig,
+		RedisConfig:    redisConfig,
+		RabbitMQConfig: mqConfig,
+		MaxWorkerCount: getInt(getEnvValue("MAX_WORKER_COUNT", "1"), 1),
 	}
 
 	log.Println(config)
 	return config
 }
+
 
 // Loads DB Config
 func loadDBConfig() DatabaseConfig {
@@ -62,36 +73,40 @@ func loadDBConfig() DatabaseConfig {
 		Password:     pass,
 		DatabaseName: name,
 		Host:         host,
-
-
-        Address:      addr,
-		Port:         port,
+		Address: addr,
+		Port:    port,
 	}
 
 	return dbConfig
 }
 
+// Loads RabbitMQ Config
+func loadRabbitMQConfig() RabbitMQConfig {
+	url := getEnvValue("RABBITMQ_URL", "DEFAULT_RABBITMQ_URL")
+	
+
+	mqConfig:= RabbitMQConfig{
+		URL: url,
+	}
+
+	return mqConfig
+}
 // Loads Redis Config
 func loadRedisConfig() RedisConfig {
-	user := getEnvValue("REDIS_USER", "DEFAULT_DB_USER")
 	pass := getEnvValue("REDIS_PASS", "DEFAULT_DB_PASS")
-	name := getEnvValue("REDIS_NAME", "DEFUALT_DB_NAME")
-	host := getEnvValue("REDIS_HOST", "DEFAULT_DB_HOST")
+	db := getEnvValue("REDIS_DB", "DEFUALT_DB_NAME")
 	addr := getEnvValue("REDIS_ADDR", "DEFAULT_DB_ADDR")
-	port := getEnvValue("REDIS_PORT", "DEFAULT_DB_PORT")
+	prot := getEnvValue("REDIS_PROTOCOL", "DEFAULT_DB_PROTOCOL")
 
 	redisConfig := RedisConfig{
-		User:         user,
-		Password:     pass,
-		DatabaseName: name,
-		Host:         host,
-		Address:      addr,
-		Port:         port,
+		Password: pass,
+		DB:       getInt(db, 0),
+		Address:  addr,
+		Protocol:    getInt(prot, 2),
 	}
 
 	return redisConfig
 }
-
 
 func getEnvValue(key string, defaultValue string) string {
 	if value, ok := os.LookupEnv(key); ok && value != "" {
@@ -99,4 +114,14 @@ func getEnvValue(key string, defaultValue string) string {
 	}
 
 	return defaultValue
+}
+
+func getInt(val string, def int) int {
+	p, err := strconv.Atoi(val)
+
+	if err != nil {
+		p = def
+	}
+
+	return p
 }

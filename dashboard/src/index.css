@@ -1,0 +1,175 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+@layer base {
+  :root {
+    --background: 0 0% 98%;
+    --foreground: 0 0% 20%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 20%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 20%;
+
+    --primary: 0 0% 20%;
+    --primary-foreground: 0 0% 98%;
+
+    --secondary: 0 0% 93%;
+    --secondary-foreground: 0 0% 20%;
+
+    --muted: 0 0% 90%;
+    --muted-foreground: 0 0% 50%;
+
+    --accent: 48 80% 58%;
+    --accent-foreground: 0 0% 15%;
+
+    --destructive: 0 60% 55%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 0 0% 72%;
+    --input: 0 0% 72%;
+    --ring: 48 80% 58%;
+
+    --radius: 0px;
+
+    --shadow-brutal: none;
+    --shadow-brutal-sm: none;
+    --shadow-brutal-lg: none;
+    --border-thick: 2px solid hsl(0 0% 65%);
+    --border-thin: 1px solid hsl(0 0% 72%);
+
+    --runway: 0 0% 80%;
+    --taxiway: 0 0% 94%;
+    --terminal: 0 0% 100%;
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+  .dark {
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+    border-radius: 0 !important;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Space Grotesk', system-ui, sans-serif;
+  }
+
+  code, .font-mono {
+    font-family: 'JetBrains Mono', monospace;
+  }
+}
+
+@layer components {
+  .brutal-border {
+    border: var(--border-thick);
+  }
+
+  .brutal-shadow {
+    box-shadow: var(--shadow-brutal);
+  }
+
+  .brutal-shadow-sm {
+    box-shadow: var(--shadow-brutal-sm);
+  }
+
+  .brutal-shadow-lg {
+    box-shadow: var(--shadow-brutal-lg);
+  }
+
+  .brutal-card {
+    border: var(--border-thick);
+    box-shadow: var(--shadow-brutal);
+    background: hsl(var(--card));
+  }
+
+  .brutal-btn {
+    border: var(--border-thick);
+    box-shadow: var(--shadow-brutal);
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    transition: transform 50ms, box-shadow 50ms;
+  }
+
+  .brutal-btn:hover {
+    transform: translate(2px, 2px);
+    box-shadow: 2px 2px 0px hsl(0 0% 5%);
+  }
+
+  .brutal-btn:active {
+    transform: translate(4px, 4px);
+    box-shadow: none;
+  }
+
+  .brutal-btn-primary {
+    background: hsl(var(--foreground));
+    color: hsl(var(--background));
+  }
+
+  .brutal-btn-accent {
+    background: hsl(var(--accent));
+    color: hsl(var(--accent-foreground));
+  }
+
+  .brutal-btn-danger {
+    background: hsl(var(--destructive));
+    color: hsl(var(--destructive-foreground));
+  }
+
+  .brutal-btn-disabled {
+    opacity: 0.5;
+    pointer-events: none;
+    box-shadow: none;
+  }
+
+  .brutal-input {
+    border: var(--border-thick);
+    box-shadow: var(--shadow-brutal-sm);
+    font-family: 'JetBrains Mono', monospace;
+    background: hsl(var(--card));
+  }
+
+  .airport-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-size: 0.75rem;
+  }
+
+  .airport-badge {
+    border: var(--border-thin);
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-size: 0.65rem;
+    padding: 2px 8px;
+    display: inline-block;
+  }
+}
