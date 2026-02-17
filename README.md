@@ -3,16 +3,16 @@
 powered by geohash & geospatial indexing provided by redis & golang worker pool
 
 # Architecture Overview
-https://excalidraw.com/#json=_qJcyO3x9C_Oe9gp2KnE_,rMweYx-wltCiSE8PMT8exg
+<img width="7479" height="3657" alt="image" src="https://github.com/user-attachments/assets/4103e9a9-e047-48a8-a7d8-22f33c83f13a" />
+
+link: https://excalidraw.com/#json=_qJcyO3x9C_Oe9gp2KnE_,rMweYx-wltCiSE8PMT8exg
 
 # Ride Matching Algorithm Overview
-![alt text](1.png)
+<img width="1857" height="1039" alt="1" src="https://github.com/user-attachments/assets/c7319373-bc32-4e40-92e6-0b4944bcf3cc" />
+<img width="1870" height="1049" alt="2" src="https://github.com/user-attachments/assets/2092b6a6-21a2-4d0c-b13c-76e16d6bcd27" />
+<img width="1867" height="1044" alt="3" src="https://github.com/user-attachments/assets/016dfb53-4648-462f-82bd-502cbd2aa76d" />
+<img width="1868" height="1049" alt="4" src="https://github.com/user-attachments/assets/51ae5f43-96b9-4ca6-b3eb-2d9eae68dbb7" />
 
-![alt text](2.png)
-
-![alt text](3.png)
-
-![alt text](4.png)
 
 ## Techstack
 - Golang (backend)
@@ -87,5 +87,6 @@ backend/
 ├── go.mod
 └── go.sum
 ```
-a minimal dashboard :
-![alt text](image.png)
+## A minimal dashboard :
+<img width="1913" height="723" alt="Screenshot 2026-02-18 002856" src="https://github.com/user-attachments/assets/2f376a88-48d5-48cd-b21e-daaa40abf86e" />
+
